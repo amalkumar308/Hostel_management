@@ -50,13 +50,13 @@ $userid = $_SESSION['user_id'];
 
 
 
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<link rel="shortcut icon" href="favicon.ico">
+  
 <style type="text/css">
             
             * {
@@ -127,7 +127,7 @@ $userid = $_SESSION['user_id'];
 
     <link href="generic.css" rel="stylesheet" type="text/css" />
 	<script src="./assets/js/jquery.min.js"></script>
-
+	<script src="./assets/js/jquery.min1.js"></script>
 	<script src="./assets/js/bootstrap.min.js"></script>
 </head>
 <body style="background-image:url(background/20.jpg) ;background-repeat:no-repeat;background-attachment: fixed;">

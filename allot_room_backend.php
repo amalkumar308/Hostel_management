@@ -17,58 +17,51 @@ exit();
 
 $userid = $_SESSION['user_id'];
     
+            //fetch data from h_caretaker table name
+
       $sql = "SELECT * FROM `h_caretaker` WHERE user_id = '$id'";
           $result = mysqli_query($con,$sql);
           $row5 = $result->fetch_array();
 
 
-
-echo "<script>alert('$sql  kkk<br>  $row5[0]');</script>";
-
-
-
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-      // username and password sent from form 
      
 
       $check = validate($_POST["check"]);
 
       if($check==1)
-      {
+      { 
+          //accept apperopriate data from form
           $reg = validate($_POST["reg"]);  
           $room = validate($_POST["room"]);  
 
 
+            //fetch data from mnnit_data_base table name
 
-
-          $sql1 = "SELECT * FROM `mnnit_data_base`";
+          $sql1 = "SELECT * FROM `mnnit_data_base` WHERE reg_no. = '$reg'";
           $result1 = mysqli_query($con,$sql1);
           
-          while($row = $result1->fetch_array())
+          $row = $result1->fetch_array();
+          $count = mysqli_num_rows($result1);
+          if($count == 1) 
           {
-            if($row[2]==$reg)
-            {
-            $sql = "INSERT INTO `$row5[2]`(`reg_no.`,`room_no.`,`first_name`, `middle_name`, `last_name`, `email`,`mob-no.`,`course`,`branch`,`year`,`session`) VALUES ('$reg','$room','$row[3]','$row[4]','$row[5]','$row[6]','$row[7]','$row[8]','$row[9]','$row[10]','$row[11]')";
+            $sql = "INSERT INTO `$row5[2]`(`reg_id.`,`room_no.`,`first_name`, `middle_name`, `last_name`, `email`,`mob-no.`,`course`,`branch`,`year`,`session`) VALUES ('$reg','$room','$row[3]','$row[4]','$row[5]','$row[6]','$row[7]','$row[8]','$row[9]','$row[10]','$row[11]')";
              if ($con->query($sql) === TRUE)
            {
               echo "<script>alert('$room Is Alloted');window.location='careteker_room.php';</script>";
-              
    
             }
-            else
-            {
-              echo "<script>alert('$room Is Allready Alloted');window.location='careteker_room.php';</script>";
-            }
-           
-
           }
-        }
+          else
+          {
+            echo "<script>alert('$reg Not on server');window.location='careteker_room.php';</script>";
+          }
         }
     else
     {
+      // regestration , room no. and basic details sent from form  
+     
       $reg = validate($_POST["reg"]);  
       $room = validate($_POST["room"]);  
       $first = validate($_POST["first_name"]);  
@@ -81,25 +74,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       $year = validate($_POST["year"]);  
       $session = validate($_POST["sess"]);  
      
-      
-      $sql = "INSERT INTO `$row5[2]` (`reg_no.`,`room_no.`,`first_name`, `middle_name`, `last_name`, `email`,`mob-no.`,`course`,`branch`,`year`,`session`) VALUES ('$reg','$room','$first','$middle','$last','$email','$mob','$course','$branch','$year','$session')";
+              //insert all details into $row5 which are fetched in above query 
+      $sql = "INSERT INTO `$row5[2]` (`reg_id.`,`room_no.`,`first_name`, `middle_name`, `last_name`, `email`,`mob-no.`,`course`,`branch`,`year`,`session`) VALUES ('$reg','$room','$first','$middle','$last','$email','$mob','$course','$branch','$year','$session')";
            if ($con->query($sql) === TRUE)
            {
               echo "<script>alert('$room Is Alloted');window.location='careteker_room.php';</script>";
    
-            }
-          else
-          {
-            echo "<script>alert('Already registered');window.location='careteker_room.php';</script>";
-          }
-
-
-
-    }
+           }
+           else
+           {
+             echo "<script>alert('Already registered');window.location='careteker_room.php';</script>";
+           }
+    } 
 }
-
-
-       
-//
-
 ?>

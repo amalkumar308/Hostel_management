@@ -10,12 +10,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
        $myusername = mysqli_real_escape_string($con,$_POST['user_id']);
       $mypassword = mysqli_real_escape_string($con,$_POST['pass']); 
       $diss = validate($_POST["dis"]);
-     
- 
-
      if($diss=="Caretaker")
      {
-
+             //fetch data from h_caretaker table name
         $sql = "SELECT * FROM h_caretaker WHERE user_id = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($con,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -43,6 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
      }
      else
      {
+                  //fetch data from h_wardon table name
        $sql = "SELECT user_id FROM h_wardon WHERE user_id = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($con,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -65,13 +63,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
          echo "<script>alert('invalid user id and password');window.location='login.php';</script>";
          die();
       }   
-     }
-
-       
+     }      
 }
-
-
-       
-//
-
 ?>

@@ -4,47 +4,29 @@ require('function.php');
 if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
       // username and password sent from form 
-      $con = con();
-     
-      
-    
+      $con = con();   
 $b++;
 
       $pass = validate($_POST["pass"]);
       $user = validate($_POST["user_id"]);
-      
-//select data from mnnit_data_base 
+       //fetch data from mnnit_data_base table name
        $ins_qur = "SELECT * FROM `mnnit_data_base` WHERE user_id = '$user' AND password = '$pass' ";
-
-      $result = mysqli_query($con,$ins_qur);
-      
+      $result = mysqli_query($con,$ins_qur);  
      $row = $result->fetch_array();
-
-// check data is availebel or not in database
-      $count = mysqli_num_rows($result);
+     $count = mysqli_num_rows($result);
       if($count == 1) 
       {
+         //fetch data from complain1 table name
         $ins_qur1 = "SELECT * FROM `complain1` WHERE `reg_no.` = '$row[2]'";
-
         $result1 = mysqli_query($con,$ins_qur1);
-
-      
-      
-    
       }
       else
       {
-        //if not availebel print data not match
         $b=0;
         echo "<script>alert('User id And Password Does Not Match');window.location='see_complain_student.php';</script>"; 
       }
-      
-      
+         
 }
-
-
-       
-//
 
 ?>
 
@@ -53,26 +35,30 @@ $b++;
 <html lang="en">
 <head>
 	<link rel="shortcut icon" href="favicon.ico">
+  <!-- provide internal style to whole document -->
 <style type="text/css">
             
             * {
                 margin: 0;
                 padding: 0;
             }
-            body {
+            body 
+            {
                 font-family: Calibri;
             }
             h3
-            { font-weight: 300;
+            { 
+                font-weight: 300;
                 font-size: 4em;
                 color: #fff;
                 background-color: #071d36;
                 padding: 10px 0 0px 10px;
                 margin-bottom: 1px;
                 border: 1px solid goldenrod;
-                 border-radius: 15px;
+                border-radius: 15px;
             }
-            h2 {
+            h2
+            {
 
                 font-weight: 300;
                 font-size: 4em;
@@ -81,10 +67,11 @@ $b++;
                 padding: 10px 0 0px 10px;
                 margin-bottom: 1px;
                 border: 6px solid red;
-                 border-radius: 30px;
+                border-radius: 30px;
             }
 
-            h4 {
+            h4 
+            {
 
                 font-weight: 300;
                 font-size: 4em;
@@ -93,24 +80,20 @@ $b++;
                 padding: 10px 0 0px 10px;
                 margin-bottom: 1px;
                 border: 1px solid goldenrod;
-                 border-radius: 20px;
+                border-radius: 20px;
             }
-            p {
-
-                
-               
+            p 
+            {
                 color: #fff;
-               
                 padding: 10px 30px 0px 30px;
-                margin-bottom: 1px;
-                
-                
+                margin-bottom: 1px;     
             }
              
              .mySlides {display:none;}        
             
         </style>
 	<title>Mnnit Hostel</title>
+   <!-- Title is Given here-->
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 	
@@ -123,7 +106,7 @@ $b++;
 
     <link href="generic.css" rel="stylesheet" type="text/css" />
 	<script src="./assets/js/jquery.min.js"></script>
-	
+	<script src="./assets/js/jquery.min1.js"></script>
 	<script src="./assets/js/bootstrap.min.js"></script>
 </head>
 <body style="background-image:url(background/20.jpg) ;background-repeat:no-repeat;background-attachment: fixed;">
@@ -139,16 +122,7 @@ $b++;
         <span class="icon-bar" style="background-color: red;"></span>
         <span class="icon-bar" style="background-color: red;"></span> 
       </button>
-
-
-
-
-
-
-
-
-
-				<a class="navbar-brand" href="#"><?php echo "<img src='background/12.webp' alt='Smiley face' height='30' width='30'>";?></a>
+      <a class="navbar-brand" href="#"><?php echo "<img src='background/12.webp' alt='Smiley face' height='30' width='30'>";?></a>
 			</div>
 			
 		<div class="collapse navbar-collapse active" id="myNavbar">
@@ -156,13 +130,13 @@ $b++;
           <li class="active"><a href="index.php" >Home</a></li>
         <li class="active" data-toggle="modal" style="color:red" data-target="#add_blog_modal"><a href="hostels.php">Hostels</a></li>
         <li class="active"><a href="complain.php">Complain</a></li>
-        <li class="active"><a href="see_complain_student.php">See your complain status</a></li>
-      
+        <li class="active"><a href="see_complain_student.php">See your complain stetus</a></li>
+        <li class="active"><a href="login.php">Contact us</a></li>
         <li></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right " style="background-color: #e3f2fd;">
-        
+         <li class="active" style="background-color:inverse"><a href="#"><font size="2" color="red"><span class="glyphicon glyphicon-user" style="font-size:15px;"></span></font>Sign Up</a></li>
          <li class="active" style="background-color:inverse"><a href="login.php"><font size="2" color="red"><span class="glyphicon glyphicon-log-in" style="font-size:15px;"></span></font> Login</a></li>
          </ul>
     </div>
@@ -171,15 +145,7 @@ $b++;
   
 
 	<br><br>
-
-	<!-- End-->
-	
-	
-               
-
-  
-   
-		<div class="container"  >
+  <div class="container"  >
 			<div class="col-sm-12" >
 				  <h2 style="opacity:0.9;"><marquee><label align="center" style="color:#FFFFFF;">HOSTEL LIFE IS A MOST REMEBREBEL EVEVENT OF YOUR LIFE</label></marquee></h2>
 				      <hr>
@@ -188,7 +154,7 @@ $b++;
                               <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-3">
                                   <div class="panel panel-info">
                                       <div class="panel-heading">
-                                           <div class="panel-title">Fill Appropriate Details For See Your Complain Status</div>
+                                           <div class="panel-title">Fill Appropriate Details</div>
                                                 <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="appoint.php"></a></div>
                                            </div>  
                                             <div class="panel-body" >
@@ -211,8 +177,7 @@ $b++;
                                                                   </div>
                                                      </div>
 
-
-                    <!--Submit Button -->                                        
+                                                                <!--Submit Button -->                                        
                                                     <div class="col-md-offset-2 col-md-2">
                                                         <input type="submit" id="btn-signup" class="btn btn-info"><i class="icon-hand-right"></i>
                                                      </div>
@@ -230,8 +195,8 @@ $b++;
                           $a=0;
                         echo "<h4 style='border-radius: 10px;background-color:#00FF00;border: 5px solid #006400;width:200px;'' align=''>
                                   <label align='center' style='color:#000080'> 
-                                <b>Your Complains </b>          
-                           
+                                <b>Complain </b>          
+                          
                                  </label>
                                 </h4>";
 
@@ -253,25 +218,13 @@ $b++;
                       }
                       ?>
                       
-       
-
-
   <br><br>
-    
-                          </div>
-                    
-	
-
-
-
-
-
+               </div>
+ <!-- Footer-->
 <footer class="container-fluid">
 	<div style="text-align:center;padding:1%;font-weight:bold;color:#D7DA0F">
 		devloped By Choubeyji &copy; 2018
 	</div>
 </footer>
-
-
 </body>
 </html>

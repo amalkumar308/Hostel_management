@@ -1,6 +1,4 @@
 <?php
-
-
 //function to validate value which are fetched from form like html entities and trim
 function validate($val)
 {
@@ -8,9 +6,6 @@ function validate($val)
 	$val=trim($val);
 	return $val;
 }
-
-
-
 
 //function to connect database
 function con()
@@ -25,13 +20,12 @@ $dbname="hostels";
 $con=new MySQLi($dbhost,$dbuname,$dbpassword,$dbname);
 if($con->connect_errno)
 {
-
 	//if conncetion is not establised with database, then give error message
 	die("Not able to connect to database".$con->connect_error);
 }
  else
  {
- 	return $con;
+   return $con;
  }
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('function.php');
- $con = con();
+$con = con();
 
 if(isset($_SESSION['user_id'])){
 $id=$_SESSION['user_id'];
@@ -16,22 +16,16 @@ exit();
 }
 
 $userid = $_SESSION['user_id'];
-    
+
+            //fetch data from h_caretaker table name
+
       $sql = "SELECT * FROM `h_caretaker` WHERE user_id = '$id'";
           $result = mysqli_query($con,$sql);
           $row5 = $result->fetch_array();
 
-
-
-
-
-
-
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-      // username and password sent from form 
+      // regestration , room no. and basic details sent from form  
      
 
       $reg = validate($_POST["reg"]);  
@@ -42,26 +36,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       $email = validate($_POST["email"]);  
       $mob = validate($_POST["mob"]); 
       $diss = validate($_POST["dis"]);
-      
-     
-      
+         
       $sql = "INSERT INTO `h_team_mem`(`hostel_name`,`desigenation.`,`reg_no.`,`room_no.`,`first_name`,`middle_name`,`last_name`,`email`,`mob-no.`) VALUES ('$row5[2]','$diss','$reg','$room','$first','$middle','$last','$email','$mob')";
            if ($con->query($sql) === TRUE)
            {
               echo "<script>alert('Successfully Added');window.location='aee_wardon_order.php';</script>";
-   
-            }
+           }
           else
           {
             echo "<script>alert('Already registered');window.location='see_wardon_order.php';</script>";
           }
-
-
-
 }
-
-
-       
-//
-
 ?>

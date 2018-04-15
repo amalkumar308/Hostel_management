@@ -10,7 +10,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       $hostel = validate($_POST["hostel"]);
       $pass = validate($_POST["pass"]);
       $user = validate($_POST["user_id"]);
-     
 
        //query to check user_id is present or not
       $ins_qur = "SELECT * FROM `mnnit_data_base` WHERE user_id = '$user' AND password = '$pass' ";
@@ -18,15 +17,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       $result = mysqli_query($con,$ins_qur);
       
      $row = $result->fetch_array();
-
-
-      $count = mysqli_num_rows($result);
+     $count = mysqli_num_rows($result);
       if($count == 1) 
       {
         if($row[2]==$reg)
         {
        $sql = "INSERT INTO `complain1`(`stetus`,`reg_no.`, `hostel_name`, `room_no.`, `complain`) VALUES ('Received','$reg','$hostel',$room,'$comp')";
-
         if ($con->query($sql) === TRUE)
            {
               echo "<script>alert('Complain Successfully Registered $hostel $room $reg $comp');window.location='index.php';</script>";
@@ -45,9 +41,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
       
 }
-
-
-       
-//
-
 ?>

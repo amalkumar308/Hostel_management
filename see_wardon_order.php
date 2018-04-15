@@ -123,7 +123,7 @@ $userid = $_SESSION['user_id'];
 
     <link href="generic.css" rel="stylesheet" type="text/css" />
 	<script src="./assets/js/jquery.min.js"></script>
-	
+	<script src="./assets/js/jquery.min1.js"></script>
 	<script src="./assets/js/bootstrap.min.js"></script>
 </head>
 <body style="background-image:url(background/20.jpg) ;background-repeat:no-repeat;background-attachment: fixed;">
@@ -153,12 +153,11 @@ $userid = $_SESSION['user_id'];
 			
 		 <div class="collapse navbar-collapse active" id="myNavbar">
 			<ul class="nav navbar-nav" style="background-color: #e3f2fd;">
-				  <li class="active"><a href="caretaker.php" >Home</a></li>
-        <li class="active" data-toggle="modal" style="color:red" data-target="#add_blog_modal"><a href="careteker_room.php">Allot Room</a></li>
-        <li class="active"><a href="see_complain_caretekar.php">See Complain</a></li>
+				<li class="active"><a href="caretaker.php" >Home</a></li>
+				<li class="active" data-toggle="modal" style="color:red" data-target="#add_blog_modal"><a href="careteker_room.php">Allot Room</a></li>
+				<li class="active"><a href="see_complain_caretekar.php">See Complain</a></li>
         <li class="active"><a href="see_wardon_order.php">See wardon order & Add Hostel Committee members</a></li>
-        <li class="active"><a href="search_update.php">Search student</a></li>
-
+				<li></li>
 				
 			</ul>
 
@@ -184,13 +183,13 @@ $userid = $_SESSION['user_id'];
    
 		<div class="container"  >
 			<div class="col-sm-12" >
-				<h2 style="opacity:0.9;"><marquee><label align="center" style="color:#FFFFFF;">HOSTEL LIFE IS A MOST REMEMBERAL EVEVENT OF YOUR LIFE</label></marquee></h2>
+				<h2 style="opacity:0.9;"><marquee><label align="center" style="color:#FFFFFF;">HOSTEL LIFE IS A MOST REMEBREBEL EVEVENT OF YOUR LIFE</label></marquee></h2>
 				<hr>
 				
 
 	
 
- 				<div style="color:#FFFFFF ;border-radius: 20px; padding: 20px 30px 0px 30px;background-color:#071d36;opacity: 0.9; ">
+ 				<div style="color:#FFFFFF ;border-radius: 20px; padding: 20px 30px 0px 30px;background-color:#071d36;opacity: 0.8; ">
 
            <div style="color:#FFFFFF ;border-radius: 20px;background-color:#071d36; ">
                 <br>
@@ -202,11 +201,11 @@ $userid = $_SESSION['user_id'];
                 <div id="sliderFrame"> 
                    <div id="slider" style="opacity: 1; border-radius: 10px;width:500px;">
     
-                      <img src="background/741/01.jpg" alt="" />
-                      <img src="background/741/02.jpg" alt="" />
-                      <img src="background/741/03.jpg" alt="" />
-                      <img src="background/741/04.jpg" alt="" />
-                      <img src="background/741/05.jpg" alt="" />
+          <img src="background/10.jpg" alt="" />
+          <img src="background/09.jpg" alt="" />
+                      <img src="background/08.jpg" alt="" />
+                      <img src="background/07.jpg" alt="" />
+                      <img src="background/06.jpg" alt="" />
                          </div>
                     <div id="htmlcaption" style="display: none;">
             
@@ -228,7 +227,7 @@ $userid = $_SESSION['user_id'];
                         $result = mysqli_query($con,$sql);
                           echo "<br><br><br><br><br><br><br><br><br>";
                          while($row3=$result->fetch_array())
-                                echo "* $row3[0] <br><br>";
+                                echo "$row3[0] <br><br>";
                           
                         ?>
                 <marquee>
@@ -244,10 +243,7 @@ $userid = $_SESSION['user_id'];
 
 <hr>
     
-      
-
-      <h4 style="opacity: 1; border-radius: 10px;width:400px;" align="center"><label align="center" style="color:#D7DA0F"> Add Details of Committee members   :&nbsp;</label></h4>
-            
+              
 
         <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-3">
                 <div class="panel panel-info">
@@ -361,7 +357,7 @@ $userid = $_SESSION['user_id'];
                    </div>
 
 
-      <hr>
+      
 
 <footer class="container-fluid">
 	<div style="text-align:center;padding:1%;font-weight:bold;color:#D7DA0F">
